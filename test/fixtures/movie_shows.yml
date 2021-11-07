@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room: 1
+  showtime: 1
+  date: 2021-11-07
+  movie: one
+
+two:
+  room: 1
+  showtime: 1
+  date: 2021-11-07
+  movie: two
