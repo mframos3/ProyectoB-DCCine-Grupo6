@@ -35,11 +35,10 @@ ActiveRecord::Schema.define(version: 2021_11_07_144540) do
     t.integer "row"
     t.integer "col"
     t.bigint "movie_show_id", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["movie_show_id"], name: "index_seats_on_movie_show_id"
-    t.index ["user_id"], name: "index_seats_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,5 +50,4 @@ ActiveRecord::Schema.define(version: 2021_11_07_144540) do
 
   add_foreign_key "movie_shows", "movies"
   add_foreign_key "seats", "movie_shows"
-  add_foreign_key "seats", "users"
 end
