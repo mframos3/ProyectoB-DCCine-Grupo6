@@ -1,0 +1,24 @@
+<h1>Crear Función</h1>
+<%= form_for @movie_show, url: {action: "create"} do |f| %>
+  <div style="width:400px">
+    <div style="margin-top:15px">
+    <%= f.label :movie_id, "Película" %>
+    <%= f.collection_select(:movie_id, Movie.all, :id, :title) %>
+    </div>
+    <div style="margin-top:15px">
+    <%= f.label :room, "Sala" %>
+    <%= f.number_field :room, step: :any %>
+    </div>
+    <div style="margin-top:15px">
+    <%= f.label :showtime, "Horario" %>
+    <%= f.select :showtime, options_for_select(MovieShow.showtimes.map {|key, value| [key.titleize, MovieShow.showtimes.key(value)]}, @movie_show.showtime) %>
+    </div>
+    <div style="margin-top:15px">
+    <%= f.label :date, "Fecha" %>
+    <%= date_field("movie_show", "date") %>
+    </div>
+    <div style="margin-top:15px">
+    <%= f.submit %>
+    </div>
+  <div>
+<% end %>
