@@ -1,0 +1,17 @@
+<h1>Crear Película</h1>
+<%= form_for @movie, url: {action: "create"} do |f| %>
+  <div style="width:400px">
+    <div style="margin-top:15px">
+    <%= f.label :title, "Nombre de la película" %>
+    <%= f.text_field :title %>
+    </div>
+    <div style="margin-top:15px">
+    <%= f.label :image, "Imagen" %>
+    <%= f.file_field :image %>
+    </div>
+
+    <div style="margin-top:15px">
+    <%= f.submit %>
+    </div>
+  <div>
+<% end %>
