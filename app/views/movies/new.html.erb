@@ -1,0 +1,29 @@
+<h1>Crear Película</h1>
+<div class="movie">
+  <%= form_for @movie, url: {action: "create"} do |f| %>
+    <div>
+      <div class="input">
+        <div>
+          <%= f.label :title, "Nombre de la película" %>
+        </div>
+        <div>
+          <%= f.text_field :title %>
+        <div>
+        <p class="error"> <%= @movie.errors[:title][0] %> <p>
+      </div>
+      <div class="input">
+        <div>
+          <%= f.label :image, "Imagen" %>
+        </div>
+        <div>
+          <%= f.file_field :image %>
+        </div>
+        <p class="error"> <%= @movie.errors[:image][0] %> <p>
+      </div>
+
+      <div class="input">
+      <%= f.submit %>
+      </div>
+    <div>
+  <% end %>
+</div>
