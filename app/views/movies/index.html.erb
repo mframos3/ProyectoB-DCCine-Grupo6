@@ -1,3 +1,7 @@
+<%= form_with url: "/movies", method: :get do |f| %>
+  <%= f.date_field :date %>
+  <%= f.submit "Filtrar" %>
+<% end %>
 <div class="movies">
   <% @movies.each do |movie| %>
     <div class="movie-card">
