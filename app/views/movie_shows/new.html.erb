@@ -1,24 +1,42 @@
 <h1>Crear Función</h1>
 <%= form_for @movie_show, url: {action: "create"} do |f| %>
-  <div style="width:400px">
-    <div style="margin-top:15px">
-    <%= f.label :movie_id, "Película" %>
-    <%= f.collection_select(:movie_id, Movie.all, :id, :title) %>
+  <div style="width:500px">
+    <div class="input">
+      <div> 
+        <%= f.label :movie_id, "Película" %>
+      </div>
+      <div> 
+        <%= f.collection_select(:movie_id, Movie.all, :id, :title) %>
+      </div>
+      <p class="error"> <%= @movie_show.errors[:movie][0] %> <p>
     </div>
-    <div style="margin-top:15px">
-    <%= f.label :room, "Sala" %>
-    <%= f.number_field :room, step: :any %>
+    <div class="input">
+      <div> 
+        <%= f.label :room, "Sala (máximo 8)" %>
+      </div>
+      <div>
+        <%= f.number_field :room, step: :any, max: 8, min: 1 %>
+      </div>
+      <p class="error"> <%= @movie_show.errors[:room][0] %> <p>
     </div>
-    <div style="margin-top:15px">
-    <%= f.label :showtime, "Horario" %>
-    <%= f.select :showtime, options_for_select(MovieShow.showtimes.map {|key, value| [key.titleize, MovieShow.showtimes.key(value)]}, @movie_show.showtime) %>
+    <div class="input">
+      <div> 
+        <%= f.label :showtime, "Horario" %>
+      </div>
+      <div>
+        <%= f.select :showtime, options_for_select(MovieShow.showtimes.map {|key, value| [key.titleize, MovieShow.showtimes.key(value)]}, @movie_show.showtime) %>
+      </div>
+      <p class="error"> <%= @movie_show.errors[:showtime][0] %> <p>
     </div>
-    <div style="margin-top:15px">
-    <%= f.label :date, "Fecha" %>
-    <%= date_field("movie_show", "date") %>
+    <div class="input">
+      <div> </div>
+      <%= f.label :date, "Fecha" %>
+      <div> </div>
+      <%= date_field("movie_show", "date") %>
+      <p class="error"> <%= @movie_show.errors[:date][0] %> <p>
     </div>
-    <div style="margin-top:15px">
-    <%= f.submit %>
+    <div class="input">
+      <%= f.submit %>
     </div>
   <div>
 <% end %>
