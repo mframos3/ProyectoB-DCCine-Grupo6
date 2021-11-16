@@ -15,7 +15,7 @@
         <%= f.label :room, "Sala (máximo 8)" %>
       </div>
       <div>
-        <%= f.number_field :room, step: :any, max: 8 %>
+        <%= f.number_field :room, step: :any, max: 8, min: 1 %>
       </div>
       <p class="error"> <%= @movie_show.errors[:room][0] %> <p>
     </div>
