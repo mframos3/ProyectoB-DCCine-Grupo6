@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddValidationToMovieShow < ActiveRecord::Migration[6.1]
   def change
     change_column :movie_shows, :room, :integer, null: false, limit: 8

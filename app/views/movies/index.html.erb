@@ -1,0 +1,36 @@
+<%= form_with url: "/movies", method: :get do |f| %>
+  <%= f.date_field :date %>
+  <%= f.submit "Filtrar" %>
+<% end %>
+<div class="movies">
+  <% @movies.each do |movie| %>
+    <div class="movie-card">
+      <%= image_tag movie.image %>
+      <h1 class="movie-title"><%= movie.title %></h1>
+      <div class="schedule-container">
+        <span>MATINÉ: </span> 
+        <div class="rooms">
+          <% movie.movie_shows.each do |movie_show| %>
+            <span><%="Sala #{movie_show.room}" if movie_show.showtime=="matine"%></span>
+          <% end %>
+        </div>
+      </div>
+      <div class="schedule-container">
+        <span>TANDA:</span> 
+        <div class="rooms">
+          <% movie.movie_shows.each do |movie_show| %>
+            <span><%="Sala #{movie_show.room}" if movie_show.showtime=="tanda"%></span>
+          <% end %>
+        </div>
+      </div>
+      <div class="schedule-container">
+        <span>NOCHE: </span> 
+        <div class="rooms">
+          <% movie.movie_shows.each do |movie_show| %>
+            <span><%="Sala #{movie_show.room}" if movie_show.showtime=="noche"%></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
