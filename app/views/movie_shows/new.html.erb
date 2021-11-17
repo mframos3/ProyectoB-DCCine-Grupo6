@@ -1,4 +1,7 @@
-<h1>Crear Función</h1>
+<div class="function-container">
+  <h1>Crear Función</h1>
+  <%= button_to "Agregar película", new_movie_path, method: :get, class: 'add-movie' %>
+</div>
 <%= form_for @movie_show, url: {action: "create"} do |f| %>
   <div style="width:500px">
     <div class="input">

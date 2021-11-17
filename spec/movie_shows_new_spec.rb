@@ -20,4 +20,10 @@ RSpec.describe 'New Movie Show', type: :system do
     expect(page).to have_content('tanda')
     expect(page).to have_content('Star Wars')
   end
+
+  it 'visits movies/new' do
+    visit '/movie_shows/new'
+    click_button 'Agregar película'
+    expect(page).to have_content('Crear Película')
+  end
 end
