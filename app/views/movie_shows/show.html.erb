@@ -1,3 +1,16 @@
-<%= @movie_show.room %>
-<%= @movie_show.date %>
-<%= @movie_show.showtime %>
+<div>
+  <div>
+    <%= image_tag (@movie_show.movie.image) , style: 'width:300px;height:400px'%>
+
+    <div>Película: <%= @movie_show.movie.title %></div>
+  </div>
+  <div>
+    Sala: <%= @movie_show.room %>
+  </div>
+  <div>
+    Fecha: <%= @movie_show.date %> 
+  </div>
+  <div>
+    Horario: <%= @movie_show.showtime %>
+  </div>
+</div>
