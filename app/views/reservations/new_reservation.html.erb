@@ -1,0 +1,41 @@
+
+<h2 style='color:black;'>Reserva asientos para función</h2>
+<div class="reservation-container">
+  <div>
+    <p>Película: <%=@movie_show.movie.title%></p>
+    <p>Horario: <%=@movie_show.showtime%></p>
+    <p>Sala: <%=@movie_show.room%></p>
+  </div>
+
+
+  <form action='new_reservation' method='POST' id='seat-reservation'>
+    <input type="hidden" value="<%=form_authenticity_token()%>" name="authenticity_token"/>
+    <%(0..4).each do |row|%>
+        <div class="reservation-matrix">
+          <%(0..12).each do |col|%>
+            <%disabled=''%>
+            <%seat_id=-1%>
+            <%seat = @movie_show.seats.where(row: row).where(col: col).first%>
+            <%if seat == nil%>
+              <%disabled='disabled'%>
+            <%else%>
+              <%if seat.user_id%>
+                <%disabled='disabled'%>
+              <%end%>
+              <%seat_id = seat.id%>
+            <%end%>
+            
+            <div class="seat_card">
+              (<%=row%>,<%=col%>)
+              <input type="checkbox" <%=disabled%> name="seats[]" value=<%=seat_id%> form='seat-reservation'>
+            </div>
+          <%end%>
+        </div>
+    <%end%>
+    <label>Nombre de usuario</label>
+    <input type='text' name='user_name'>
+    <label>Rut de usuario</label>
+    <input type='text' name='user_rut'>
+    <button form='seat-reservation' type='submit'> Registrar </button>
+  </form>
+</div>

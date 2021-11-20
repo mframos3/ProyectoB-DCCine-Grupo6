@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 
   resources :movies, only: %i[index new create show]
   resources :movie_shows, only: %i[new create show]
+  resources :reservations, only: %i[index show]
+  get 'new_reservation', to: 'reservations#new_reservation'
+  post 'new_reservation', to: 'reservations#create_reservation'
 end
