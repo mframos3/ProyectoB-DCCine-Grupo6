@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MovieShowsController < ApplicationController
+
   def new
     @movie_show = MovieShow.new
   end
