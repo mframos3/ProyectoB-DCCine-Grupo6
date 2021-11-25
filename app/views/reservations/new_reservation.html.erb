@@ -8,7 +8,7 @@
   </div>
 
 
-  <form action='new_reservation' method='POST' id='seat-reservation'>
+  <form action='/new_reservation' method='POST' id='seat-reservation'>
     <input type="hidden" value="<%=form_authenticity_token()%>" name="authenticity_token"/>
     <%(0..4).each do |row|%>
         <div class="reservation-matrix">
@@ -24,10 +24,9 @@
               <%end%>
               <%seat_id = seat.id%>
             <%end%>
-            
-            <div class="seat_card">
+            <div class="seat_card <%=disabled%>">
               (<%=row%>,<%=col%>)
-              <input type="checkbox" <%=disabled%> name="seats[]" value=<%=seat_id%> form='seat-reservation'>
+              <input type="checkbox" <%=disabled%> name="seats[]" value=<%=seat_id%> form='seat-reservation' id="(<%=row%>,<%=col%>)">
             </div>
           <%end%>
         </div>
@@ -36,6 +35,7 @@
     <input type='text' name='user_name'>
     <label>Rut de usuario</label>
     <input type='text' name='user_rut'>
-    <button form='seat-reservation' type='submit'> Registrar </button>
+    <button form='seat-reservation' type='submit' value='Registrar'>Registrar</button>
   </form>
+  <%= link_to 'Volver a cartelera', movies_path %>
 </div>
