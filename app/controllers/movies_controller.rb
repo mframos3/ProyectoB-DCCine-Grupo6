@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       else
-        format.html { redirect_to @movie, notice: 'High score was successfully created.' }
+        format.html { redirect_to @movie, notice: 'Película creada.' }
         format.json { render :show, status: :created, location: @movie }
       end
     end
