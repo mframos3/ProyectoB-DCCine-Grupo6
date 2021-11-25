@@ -19,7 +19,7 @@ class MovieShowsController < ApplicationController
         format.json { render json: @movie_show.errors, status: :unprocessable_entity }
       else
         add_seats(@movie_show)
-        format.html { redirect_to @movie_show, notice: 'High score was successfully created.' }
+        format.html { redirect_to @movie_show, notice: 'Función correctamente creada.' }
         format.json { render :show, status: :created, location: @movie_show }
       end
     end
