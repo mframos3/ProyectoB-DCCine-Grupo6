@@ -2,6 +2,9 @@
   <%= f.date_field :date %>
   <%= f.submit "Filtrar" %>
 <% end %>
+<br>
+<%= link_to 'Ir a Inicio', root_path %>
+<br>
 <div class="movies">
   <% @movies.each do |movie| %>
     <div class="movie-card">

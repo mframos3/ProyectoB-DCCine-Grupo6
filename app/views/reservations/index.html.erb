@@ -1,7 +1,0 @@
-<%@movie_shows.each do |show|%>
-    <div style='display:flex;flex-direction:row;'>
-    <p><%=show.room%></p>
-    <p><%=show.showtime%><p>
-    <a href='new_reservation?movie_show_id=<%=show.id%>'>Reservar</a>
-    </div>
-<%end%>

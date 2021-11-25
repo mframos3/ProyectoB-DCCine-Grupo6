@@ -8,7 +8,7 @@
   </div>
 
 
-  <form action='new_reservation' method='POST' id='seat-reservation'>
+  <form action='/new_reservation' method='POST' id='seat-reservation'>
     <input type="hidden" value="<%=form_authenticity_token()%>" name="authenticity_token"/>
     <%(0..4).each do |row|%>
         <div class="reservation-matrix">
@@ -37,4 +37,5 @@
     <input type='text' name='user_rut'>
     <button form='seat-reservation' type='submit' value='Registrar'>Registrar</button>
   </form>
+  <%= link_to 'Volver a cartelera', movies_path %>
 </div>

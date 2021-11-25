@@ -18,6 +18,6 @@ RSpec.describe 'New Reservation', type: :system do
 		page.check('(1,1)')
 		click_button "Registrar"
     visit "/new_reservation/?movie_show_id=#{movie_show.id}"
-		find('(1,1)').assert_matches_style("background-color" => "lightcoral")
+		find_by_id('(1,1)').has_css?('.disabled')
   end
 end
