@@ -1,3 +1,4 @@
+<%= link_to 'Ir a Inicio', root_path %>
 <div class="function-container">
   <h1>Crear Función</h1>
   <%= button_to "Agregar película", new_movie_path, method: :get, class: 'add-movie' %>
@@ -11,7 +12,9 @@
       <div> 
         <%= f.collection_select(:movie_id, Movie.all, :id, :title) %>
       </div>
-      <p class="error"> <%= @movie_show.errors[:movie][0] %> <p>
+      <% if @movie_show.errors[:movie].length > 0 %>
+        <p class="error"> <%= @movie_show.errors[:movie][0] %> <p>
+      <% end %>
     </div>
     <div class="input">
       <div> 
@@ -20,7 +23,9 @@
       <div>
         <%= f.number_field :room, step: :any, max: 8, min: 1 %>
       </div>
-      <p class="error"> <%= @movie_show.errors[:room][0] %> <p>
+      <% if @movie_show.errors[:room].length > 0 %>
+        <p class="error"> <%= @movie_show.errors[:room][0] %> <p>
+      <% end %>
     </div>
     <div class="input">
       <div> 
@@ -29,15 +34,22 @@
       <div>
         <%= f.select :showtime, options_for_select(MovieShow.showtimes.map {|key, value| [key.titleize, MovieShow.showtimes.key(value)]}, @movie_show.showtime) %>
       </div>
-      <p class="error"> <%= @movie_show.errors[:showtime][0] %> <p>
+      <% if @movie_show.errors[:showtime].length > 0 %>
+        <p class="error"> <%= @movie_show.errors[:showtime][0] %> <p>
+      <% end %>
     </div>
     <div class="input">
       <div> </div>
       <%= f.label :date, "Fecha" %>
       <div> </div>
       <%= date_field("movie_show", "date") %>
-      <p class="error"> <%= @movie_show.errors[:date][0] %> <p>
+      <% if @movie_show.errors[:date].length > 0 %>
+        <p class="error"> <%= @movie_show.errors[:date][0] %> <p>
+      <% end %>
     </div>
+    <% if @movie_show.errors[:time].length > 0 %>
+      <p class="error"> <%= @movie_show.errors[:time][0] %> <p>
+    <% end %>
     <div class="input">
       <%= f.submit %>
     </div>
