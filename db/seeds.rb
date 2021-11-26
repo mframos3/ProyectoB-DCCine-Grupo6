@@ -13,34 +13,32 @@ movies.second.image.attach(io: File.open('app/assets/images/tloftr.jpg'), filena
 movie_shows = MovieShow.create([{
                                  room: 1,
                                  showtime: 0,
-                                 date: Date.tomorrow,
-                                 movie: movies.first
+                                 date: Date.new(2021,11,26),
+                                 movie: movies.second
                                },
                                 {
-                                  room: 1,
+                                  room: 3,
                                   showtime: 0,
                                   date: Date.today,
-                                  movie: movies.first
+                                  movie: movies.second
                                 },
                                 {
                                   room: 2,
                                   showtime: 0,
-                                  date: Date.today,
+                                  date: Date.new(2022,01,02),
                                   movie: movies.second
                                 }])
-users = User.create([{
+user = User.create({
                       name: 'Erick',
                       rut: '19947832-K'
-                    }])
+                    })
 
-Seat.create([{
-              row: 0,
-              col: 0,
-              user_id: users.first.id,
-              movie_show: movie_shows.first
-            },
-             {
-               row: 1,
-               col: 1,
-               movie_show: movie_shows.first
-             }])
+ocupated = [[0,3], [3,5], [2,7], [2,10], [1,7]]
+
+movie_shows.each do |movie_show|
+  (0..4).each do |row|
+    (0..12).each do |col|
+      movie_show.seats.create!({ row: row, col: col, user_id: ocupated.include?([row, col])? user.id : nil })
+    end
+  end
+end
