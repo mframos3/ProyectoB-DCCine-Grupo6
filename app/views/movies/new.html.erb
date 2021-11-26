@@ -1,3 +1,5 @@
+<%= link_to 'Ir a Inicio', root_path %>
+
 <h1>Crear Película</h1>
 <div class="movie">
   <%= form_for @movie, url: {action: "create"} do |f| %>
@@ -9,7 +11,9 @@
         <div>
           <%= f.text_field :title %>
         <div>
-        <p class="error"> <%= @movie.errors[:title][0] %> <p>
+        <% if  @movie.errors[:title].length > 0 %>
+          <p class="error"> <%= @movie.errors[:title][0] %> <p>
+        <% end %>
       </div>
       <div class="input">
         <div>
@@ -18,7 +22,9 @@
         <div>
           <%= f.file_field :image %>
         </div>
-        <p class="error"> <%= @movie.errors[:image][0] %> <p>
+        <% if  @movie.errors[:image].length > 0 %>
+          <p class="error"> <%= @movie.errors[:image][0] %> <p>
+        <% end %>
       </div>
 
       <div class="input">
