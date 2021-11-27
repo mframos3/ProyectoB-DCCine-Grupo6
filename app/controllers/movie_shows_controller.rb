@@ -32,7 +32,7 @@ class MovieShowsController < ApplicationController
   end
 
   def add_seats(movie_show)
-    (0..4).each do |row|
+    (0..3).each do |row|
       (0..11).each do |col|
         movie_show.seats.create!({ row: row, col: col })
       end
