@@ -7,19 +7,18 @@ RSpec.describe 'Movies Visualization', type: :system do
     movie = create(:movie, :tlotr)
     create(:movie, :star_wars)
     create(:movie_show, movie: movie)
-
     visit '/movies'
     movie_count = page.all('div.movies').size
     visit '/movie_shows/new'
     select 'Star Wars', from: 'movie_show_movie_id'
-    fill_in 'movie_show_room', with: 1
-    select 'Matine', from: 'movie_show_showtime'
+    fill_in 'movie_show_room', with: 3
+    select 'Tanda', from: 'movie_show_showtime'
     fill_in 'movie_show_date', with: Date.today.strftime('%m/%d/%Y')
     click_button 'Create Movie show'
     visit '/movies'
     star_wars_card = page.all('div.movie-card').last
     expect(star_wars_card).to have_content('Star Wars')
-    expect(star_wars_card).to have_content("MATINÉ:\nSala 1")
+    expect(star_wars_card).to have_content("TANDA:\nSala 3")
     expect(page).to have_selector('div.movie-card', count: movie_count + 1)
   end
 
