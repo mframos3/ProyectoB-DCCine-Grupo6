@@ -10,7 +10,7 @@
 
   <form action='/new_reservation' method='POST' id='seat-reservation'>
     <input type="hidden" value="<%=form_authenticity_token()%>" name="authenticity_token"/>
-    <%(0..4).each do |row|%>
+    <%(0..3).each do |row|%>
         <div class="reservation-matrix">
           <%(0..11).each do |col|%>
             <%disabled=''%>

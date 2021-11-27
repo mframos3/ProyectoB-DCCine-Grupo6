@@ -9,6 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 movies = Movie.create([{ title: 'Star Wars' }, { title: 'Lord of the Rings' }])
 movies.first.image.attach(io: File.open('app/assets/images/star_wars.jpg'), filename: 'star_wars.jpg')
+movies.first.save!
 movies.second.image.attach(io: File.open('app/assets/images/tloftr.jpg'), filename: 'tloftr.jpg')
 movie_shows = MovieShow.create([{
                                  room: 1,
@@ -28,7 +29,6 @@ movie_shows = MovieShow.create([{
                                   date: Date.new(2022,01,02),
                                   movie: movies.second
                                 }])
-                                puts 'shows creados'
 user = User.create({
                       name: 'Erick',
                       rut: '19947832-K'
@@ -37,8 +37,8 @@ user = User.create({
 ocupated = [[0,3], [3,5], [2,7], [2,10], [1,7]]
 
 movie_shows.each do |movie_show|
-  (0..4).each do |row|
-    (0..12).each do |col|
+  (0..3).each do |row|
+    (0..11).each do |col|
       movie_show.seats.create!({ row: row, col: col, user_id: ocupated.include?([row, col])? user.id : nil })
     end
   end
