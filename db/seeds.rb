@@ -13,7 +13,7 @@ movies.second.image.attach(io: File.open('app/assets/images/tloftr.jpg'), filena
 movie_shows = MovieShow.create([{
                                  room: 1,
                                  showtime: 0,
-                                 date: Date.new(2021,11,26),
+                                 date: Date.tomorrow,
                                  movie: movies.second
                                },
                                 {
@@ -28,6 +28,7 @@ movie_shows = MovieShow.create([{
                                   date: Date.new(2022,01,02),
                                   movie: movies.second
                                 }])
+                                puts 'shows creados'
 user = User.create({
                       name: 'Erick',
                       rut: '19947832-K'
